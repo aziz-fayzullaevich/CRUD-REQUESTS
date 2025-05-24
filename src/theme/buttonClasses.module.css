@@ -1,0 +1,5 @@
+.root {
+    &[data-variant='style'] {
+        background-color: #4263EB;
+    }
+}
