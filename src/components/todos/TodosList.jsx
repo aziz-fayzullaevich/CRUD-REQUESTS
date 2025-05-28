@@ -47,7 +47,7 @@ const TodosList = () => {
             <TableM.Td>{todo.userId}</TableM.Td>
             <TableM.Td>{todo.todo}</TableM.Td>
             <TableM.Td>
-                <Checkbox checked={todo.completed} readOnly />
+                <Checkbox checked={todo.completed} readOnly size='25' />
             </TableM.Td>
             <TableM.Td>
                 <Flex gap={10}>

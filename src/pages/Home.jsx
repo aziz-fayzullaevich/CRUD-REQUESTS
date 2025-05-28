@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <Flex justify={'center'} align={'center'} h={'80vh'}>
       <List align={'center'}>
-        <Title>Welcome to To-Do </Title>
+        <Title>CRUD Requests </Title>
         <List.Item>
           <Flex gap={20} align={'center'}>
             <Link to='/todos'>
