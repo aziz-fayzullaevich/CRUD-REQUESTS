@@ -15,7 +15,9 @@ export const CreateTodos = () => {
         } catch (error) {
             setError('Ошибка при добавлении todo');
             throw err;
-
+        }
+        finally {
+            setLoading(false);
         }
     };
 

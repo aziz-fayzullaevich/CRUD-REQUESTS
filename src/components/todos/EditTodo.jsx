@@ -11,16 +11,18 @@ const EditTodo = ({ id }) => {
     const fetchTodo = async () => {
         try {
             const { data } = await api.get(`/todos/${id}`);
+            setLoading(true);
             setData(data);
         } catch (error) {
             setError("Ошибка при получении Todo");
+        } finally {
+            setLoading(false);
         }
     };
 
 
     const fetchEditTodo = async (body) => {
         try {
-            setLoading(true);
             await api.patch(`/todos/${id}`, body);
         } catch (error) {
             setError("Ошибка при изменении Todo");
