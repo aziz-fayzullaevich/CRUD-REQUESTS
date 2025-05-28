@@ -1,7 +1,7 @@
 import TodosForm from "./TodosForm"
-import { api } from "../api/API";
+import { api } from "../../api/API";
 import { useState } from "react";
-import { LoaderWithError } from "./LoaderWithError";
+import { LoaderWithError } from "../../ui/LoaderWithError";
 
 export const CreateTodos = () => {
     const [loading, setLoading] = useState(false);

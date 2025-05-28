@@ -1,6 +1,5 @@
 import { Button, Checkbox, Flex, Stack, Textarea } from '@mantine/core'
-import React from 'react'
-import SelectUserId from '../export-ui/SelectUserId'
+import SelectUserId from '../../export-ui/SelectUserId'
 import { modals } from '@mantine/modals'
 import { isNotEmpty, useForm } from '@mantine/form'
 import { notifications } from '@mantine/notifications'

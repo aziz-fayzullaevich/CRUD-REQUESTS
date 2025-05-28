@@ -1,19 +1,9 @@
 import { Select } from '@mantine/core';
-import React, { useEffect, useState } from 'react'
+import { useUsers } from '../hooks/useUsers';
 
 const SelectUserId = (props) => {
-    const [users, setUsers] = useState([]);
 
-    const fetchUsers = () => {
-        fetch('https://dummyjson.com/users')
-            .then(res => res.json())
-            .then(data => setUsers(data.users));
-    };
-
-    useEffect(() => {
-        fetchUsers();
-    }, []);
-
+    const {users} = useUsers();
     const filterSelectData = users.map(user => ({
         value: user.id.toString(),
         label: user.username.charAt(0).toUpperCase() + user.username.slice(1).toLowerCase(),

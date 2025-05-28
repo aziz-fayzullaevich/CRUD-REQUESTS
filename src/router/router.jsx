@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
-import TodoListsPage from "../pages/TodoListsPage";
+import TodoListsPage from "../pages/todosPage/TodoListsPage";
 import { ROUTES } from "../constans/routes";
 
 export const router = createBrowserRouter([
@@ -11,5 +11,5 @@ export const router = createBrowserRouter([
     {
         path: ROUTES.TODOS,
         element: <TodoListsPage />
-    }
+    },
 ]);

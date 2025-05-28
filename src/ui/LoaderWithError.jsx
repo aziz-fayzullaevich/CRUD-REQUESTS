@@ -3,8 +3,8 @@ import { Center, Loader, Alert } from '@mantine/core';
 export const LoaderWithError = ({ isLoading, error, children }) => {
   if (isLoading) {
     return (
-      <Center mt={20}>
-        <Loader size="lg" />
+      <Center m={60}>
+        <Loader size="lg"/>
       </Center>
     );
   }

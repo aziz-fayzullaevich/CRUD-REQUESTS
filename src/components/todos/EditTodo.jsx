@@ -1,7 +1,7 @@
 import TodosForm from "./TodosForm"
-import { api } from "../api/API"
+import { api } from "../../api/API"
 import { useEffect, useState } from "react";
-import { LoaderWithError } from "./LoaderWithError";
+import { LoaderWithError } from "../../ui/LoaderWithError";
 
 const EditTodo = ({ id }) => {
     const [data, setData] = useState(null);

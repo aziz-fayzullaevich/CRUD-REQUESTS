@@ -1,16 +1,19 @@
 import { Button, Flex, Stack, Title, Table as TableM, Checkbox, ActionIcon } from '@mantine/core';
-import { Table } from '../ui/table/Table';
-import { useTodosList } from '../hooks/useTodosList';
+import { Table } from '../../ui/Table';
+import { useTodosList } from '../../hooks/useTodosList';
 import { HiMiniPlusCircle, HiMiniPencilSquare, HiArchiveBox } from "react-icons/hi2";
 import { modals } from '@mantine/modals';
 import { CreateTodos } from './CreateTodos';
 import { DeleteTodos } from './DeleteTodos';
 import EditTodo from './EditTodo';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { ITEMS_PER_PAGE } from '../../constans/itemsPerPage';
+import { CustomPagination } from '../../export-ui/CustomPagination';
 
 const TodosList = () => {
     const { todos } = useTodosList();
-
+    const [activePage, setActivePage] = useState(1);
     const createTodo = () => {
         modals.open({
             children: <CreateTodos />,
@@ -35,8 +38,10 @@ const TodosList = () => {
         })
     };
 
+    const start = (activePage - 1) * ITEMS_PER_PAGE;
+    const paginatedTodo = todos.slice(start, start + ITEMS_PER_PAGE);
 
-    const rows = todos.map((todo) => (
+    const rows = paginatedTodo.map((todo) => (
         <TableM.Tr key={todo.id}>
             <TableM.Td>{todo.id}</TableM.Td>
             <TableM.Td>{todo.userId}</TableM.Td>
@@ -60,12 +65,9 @@ const TodosList = () => {
     return (
         <Stack gap={10}>
             <Flex align={'center'} gap={10}>
-                <Link to='/'>
-                    <Button>Back</Button>
-                </Link>
+                <Button component={Link} to='/'>Back</Button>
                 <Title>Todos List</Title>
                 <Button
-                    variant='style'
                     ml={'auto'}
                     leftSection={<HiMiniPlusCircle
                         size={25} />}
@@ -76,6 +78,8 @@ const TodosList = () => {
             </Flex>
 
             <Table thead={['ID', 'User Id', 'Todo', 'Completed']} rows={rows} />
+            <CustomPagination total={Math.ceil(todos.length / ITEMS_PER_PAGE)}
+                value={activePage} onChange={setActivePage} />
         </Stack>
     )
 }

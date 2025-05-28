@@ -11,12 +11,14 @@ import '@mantine/notifications/styles.css';
 
 const App = () => {
   return (
-    <MantineProvider theme={theme}>
-      <ModalsProvider>
-        <RouterProvider router={router} />
-      </ModalsProvider>
-      <Notifications autoClose={1500} />
-    </MantineProvider>
+    <div className="container">
+      <MantineProvider theme={theme}>
+        <ModalsProvider>
+          <RouterProvider router={router} />
+        </ModalsProvider>
+        <Notifications autoClose={1500} />
+      </MantineProvider>
+    </div>
   )
 }
 

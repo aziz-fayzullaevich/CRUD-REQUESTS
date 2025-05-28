@@ -3,7 +3,7 @@ import { Table as TableM, TableScrollContainer } from "@mantine/core"
 export const Table = ({ thead, rows }) => {
 
     return (
-        <TableScrollContainer maxHeight={600}>
+        <TableScrollContainer>
             <TableM highlightOnHover withTableBorder withColumnBorders>
                 <TableM.Thead>
                     <TableM.Tr>
