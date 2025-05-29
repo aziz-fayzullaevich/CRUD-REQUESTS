@@ -42,7 +42,7 @@ const EditTodo = ({ id }) => {
         <LoaderWithError isLoading={loading} error={error}>
             {data !== null && <TodosForm
                 title={'Save'}
-                createTodoFn={editTodoFn}
+                editTodoFn={editTodoFn}
                 initialValues={{
                     todo: data.todo,
                     completed: data.completed,
