@@ -10,10 +10,12 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { ITEMS_PER_PAGE } from '../../constans/itemsPerPage';
 import { CustomPagination } from '../../export-ui/CustomPagination';
+import { LoaderWithError } from '../../ui/LoaderWithError';
 
 const TodosList = () => {
-    const { todos } = useTodosList();
+    const { todos, isLoading, error } = useTodosList();
     const [activePage, setActivePage] = useState(1);
+    
     const createTodo = () => {
         modals.open({
             children: <CreateTodos />,
@@ -26,7 +28,6 @@ const TodosList = () => {
         modals.open({
             children: <DeleteTodos id={id} />,
             title: 'Delete',
-
         })
     };
 
@@ -76,10 +77,11 @@ const TodosList = () => {
                     Create
                 </Button>
             </Flex>
-
-            <Table thead={['ID', 'User Id', 'Todo', 'Completed']} rows={rows} />
-            <CustomPagination total={Math.ceil(todos.length / ITEMS_PER_PAGE)}
-                value={activePage} onChange={setActivePage} />
+            <LoaderWithError isLoading={isLoading} error={error}>
+                <Table thead={['ID', 'User Id', 'Todo', 'Completed']} rows={rows} />
+                <CustomPagination total={Math.ceil(todos.length / ITEMS_PER_PAGE)}
+                    value={activePage} onChange={setActivePage} />
+            </LoaderWithError>
         </Stack>
     )
 }

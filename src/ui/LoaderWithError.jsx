@@ -4,7 +4,7 @@ export const LoaderWithError = ({ isLoading, error, children }) => {
   if (isLoading) {
     return (
       <Center m={60}>
-        <Loader size="lg"/>
+        <Loader size="lg" type="dots" />
       </Center>
     );
   }

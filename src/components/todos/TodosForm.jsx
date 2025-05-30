@@ -10,7 +10,7 @@ const INITIAL_VALUE = {
   completed: false
 };
 
-const TodosForm = ({ title, editTodoFn, initialValues = INITIAL_VALUE }) => {
+const TodosForm = ({ title, createTodoFn, initialValues = INITIAL_VALUE }) => {
 
   const form = useForm({
     initialValues,
@@ -21,7 +21,7 @@ const TodosForm = ({ title, editTodoFn, initialValues = INITIAL_VALUE }) => {
   });
 
   const handleSubmit = async (values) => {
-    await editTodoFn(values)
+    await createTodoFn(values)
       .then(() => {
         modals.closeAll(),
           notifications.show({

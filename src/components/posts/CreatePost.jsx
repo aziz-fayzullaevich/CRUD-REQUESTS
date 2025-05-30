@@ -17,7 +17,7 @@ export const CreatePost = () => {
             throw error
         } finally {
             setLoading(false)
-        }
+        }  
     };
 
     const createPostFn = async (body) => {
@@ -26,7 +26,7 @@ export const CreatePost = () => {
 
     return (
         <LoaderWithError isLoading={loading} error={error}>
-            <PostForm />
+            <PostForm title={'Add'} createPostFn={createPostFn} />
         </LoaderWithError>
     )
 }
