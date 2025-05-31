@@ -10,7 +10,7 @@ const INITIAL_VALUE = {
     body: '',
 };
 
-export const PostForm = ({ title, editPostFn, initialValues = INITIAL_VALUE }) => {
+export const PostForm = ({ title, onSubmitFn, initialValues = INITIAL_VALUE }) => {
 
     const form = useForm({
         initialValues,
@@ -22,7 +22,7 @@ export const PostForm = ({ title, editPostFn, initialValues = INITIAL_VALUE }) =
     });
 
     const handleSubmit = async (values) => {
-        await editPostFn(values)
+        await onSubmitFn(values)
             .then(() => {
                 modals.closeAll(),
                     notifications.show({

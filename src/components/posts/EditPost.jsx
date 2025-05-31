@@ -42,7 +42,7 @@ export const EditPost = ({ id }) => {
         <LoaderWithError isLoading={isLoading} error={error}>
             {data !== null && <PostForm
                 title={'Save'}
-                editPostFn={editPostFn}
+                onSubmitFn={editPostFn}
                 initialValues={{
                     userId: String(data.userId),
                     title: data.title,

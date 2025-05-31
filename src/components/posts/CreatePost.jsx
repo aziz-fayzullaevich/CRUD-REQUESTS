@@ -26,7 +26,7 @@ export const CreatePost = () => {
 
     return (
         <LoaderWithError isLoading={loading} error={error}>
-            <PostForm title={'Add'} createPostFn={createPostFn} />
+            <PostForm title={'Add'} onSubmitFn={createPostFn} />
         </LoaderWithError>
     )
 }
