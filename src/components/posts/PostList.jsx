@@ -24,7 +24,7 @@ const PostList = () => {
 
   const handleSearch = (val) => {
     setSearchParams(val ? { query: val } : {});
-    setActivePage(1); // Reset to first page on search
+    setActivePage(1);
   };
 
   const displayPosts = searchQuery ? searchResults : posts;

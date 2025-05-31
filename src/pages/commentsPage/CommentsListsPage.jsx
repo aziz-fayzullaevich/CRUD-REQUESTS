@@ -1,5 +1,5 @@
+import CommentsList from "../../components/comments/CommentsList"
+
 export const CommentsListsPage = () => {
-  return (
-    <div>CommentsListPage</div>
-  )
+  return <CommentsList />
 }
