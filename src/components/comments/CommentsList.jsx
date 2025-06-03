@@ -7,6 +7,10 @@ import { LoaderWithError } from '../../ui/LoaderWithError';
 import { CustomPagination } from '../../export-ui/CustomPagination';
 import { Link } from 'react-router-dom';
 import { CommentsBlock } from '../../ui/CommentsBlock';
+import CreateCommnts from './CreateCommnts';
+import { modals } from '@mantine/modals';
+import { DeleteComments } from './DeleteComments';
+import { EditComments } from './EditComments';
 
 const CommentsList = () => {
     const { comments, isLoading, error } = useComments();
@@ -14,6 +18,27 @@ const CommentsList = () => {
 
     const start = (activePage - 1) * ITEMS_PER_PAGE;
     const paginatedComment = comments.slice(start, start + ITEMS_PER_PAGE);
+
+    const createComment = () => {
+        modals.open({
+            children: <CreateCommnts />,
+            title: 'Create Comment',
+        })
+    };
+
+    const deleteComment = id => {
+        modals.open({
+            children: <DeleteComments id={id} />,
+            title: 'Delete'
+        })
+    };
+
+    const editComment = id => {
+        modals.open({
+            children: <EditComments id={id} />,
+            title: 'Edit'
+        })
+    }
 
     return <Stack gap={10}>
         <Flex align={'center'} gap={10}>
@@ -23,6 +48,7 @@ const CommentsList = () => {
                 ml={'auto'}
                 leftSection={<HiMiniPlusCircle
                     size={25} />}
+                onClick={createComment}
             >
                 Create
             </Button>
@@ -32,9 +58,12 @@ const CommentsList = () => {
                 paginatedComment.map(comment => (
                     <CommentsBlock
                         key={comment.id}
+                        id={comment.id}
                         body={comment.body}
                         postId={comment.postId}
                         likes={comment.likes}
+                        deleteComment={deleteComment}
+                        editComment={editComment}
                     />
                 ))
             }
